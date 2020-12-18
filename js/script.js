@@ -55,33 +55,43 @@ class ToDo {
 		return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 	}
 
-	deleteItem() {
-		const todoRemove = document.querySelector('.todo-remove');
-		const todoItem = document.querySelector("#todo > li");
-		/* todoRemove.forEach(() => { */
-		todoRemove.addEventListener('click', () => {
+	/* deleteItem() { */
+	/* const todoRemove = document.querySelector('.todo-remove');
+		const todoItem = document.querySelector("#todo > li"); */
+	/* todoRemove.forEach(() => { */
+	/* todoRemove.addEventListener('click', () => {
 			todoItem.style.display = 'none';
-		});
-		/* }); */
-	}
+		}); */
+	/* }); */
+	/* } */
 
-	comletedItem() {
+	/* comletedItem() {
 		const todoComplete = document.querySelector('.todo-complete');
-		todoComplete.addEventListener('click', () => {
-			this.newToDo = {
-				comleted: true,
-			};
+		todoComplete.addEventListener('click', elem => {
+			elem.completed = !elem.completed;
 		});
-	}
+	} */
 
 	handler() {
-		// делегирование
+		const todoButtons = document.querySelector('.todo-buttons');
+
+		todoButtons.addEventListener('click', e => {
+			if (e.target.classList.contains('todo-remove')) {
+				document.querySelector("#todo > li").remove();
+			}
+			if (e.target.classList.contains('todo-complete')) {
+				this.comleted = !this.comleted;
+				this.render();
+			}
+			/* this.toDoData.push(); */
+		});
 	}
 	init() {
 		this.form.addEventListener('submit', this.addToDo.bind(this));
 		this.render();
-		this.deleteItem();
-		this.comletedItem();
+		/* this.deleteItem(); */
+		/* this.comletedItem(); */
+		this.handler();
 	}
 }
 
