@@ -69,7 +69,7 @@ class ToDo {
 	completedItem(keyC) {
 		this.toDoData.forEach(key => {
 			if (`${key}` === keyC) {
-				this.toDoData.value.completed = true;
+				this.toDoData.forEach.value.completed = true;
 			}
 		});
 		/* for (const keyToDoData of this.toDoData.keys()) {
